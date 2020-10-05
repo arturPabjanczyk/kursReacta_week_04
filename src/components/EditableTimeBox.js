@@ -1,8 +1,5 @@
 import React from "react";
 
-import TimeBox from "./TimeBox";
-import TimeBoxUpdater from "./TimeBoxUpdater";
-import TimeBoxCreator from "./TimeBoxCreator";
 import CurrentTimeBox from "./CurrentTimeBox";
 import TimeBoxEditor from "./TimeBoxEditor";
 
@@ -49,4 +46,4 @@ class EditableTimeBox extends React.Component {
     }
 }
 
-export { EditableTimeBox};
+export default EditableTimeBox;
