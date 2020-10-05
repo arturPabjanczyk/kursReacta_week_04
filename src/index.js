@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom"
 import uuid from "uuid"
 
+import Clock from "./components/Clock"
+
 function App() {
     return (
         <div className="App">
@@ -94,13 +96,7 @@ function TimeBoxEditor(props) {
     )
 }
 
-function Clock({className = "", minutes = 20, seconds = 48}) {
-    return (
-        <h2 className={"Clock " + className}>
-            Left {minutes}:{seconds}
-        </h2>
-    );
-}
+
 
 function ProgressBar({className = "", percent = 33}) {
     return (
