@@ -4,8 +4,8 @@ import uuid from "uuid";
 import Clock from "./Clock";
 import ProgressBar from "./ProgressBar";
 import TimeBox from "./TimeBox";
-import TimeBoxForm from "./TimeBoxForm";
 import TimeBoxUpdater from "./TimeBoxUpdater";
+import TimeBoxCreator from "./TimeBoxCreator";
 
 class EditableTimeBox extends React.Component {
     state = {
@@ -253,46 +253,6 @@ class TimeBoxList extends React.Component {
                         onEdit={() => this.handleEdit(index, timeBox)}
                     />
                 ))}
-            </>
-        )
-    }
-}
-
-class TimeBoxCreator extends React.Component {
-    state = {
-        title: "",
-        totalTimeInMinutes: ""
-    }
-    handleTitleChange = (event) => {
-        this.setState({title: event.target.value})
-    }
-    handleTimeInMinutesChange = (event) => {
-        this.setState({totalTimeInMinutes: event.target.value})
-    }
-    handleSubmit = (event) => {
-        event.preventDefault();
-        this.props.onConfirm({
-            id: uuid.v4(),
-            title: this.state.title,
-            totalTimeInMinutes: this.state.totalTimeInMinutes
-        });
-        this.setState({title: "", totalTimeInMinutes: ""})
-    }
-
-    render() {
-        const {title, totalTimeInMinutes} = this.state;
-        return (
-            <>
-                <h3>
-                    Creating new timeBox.
-                </h3>
-                <TimeBoxForm
-                    title={title}
-                    totalTimeInMinutes={totalTimeInMinutes}
-                    handleTitleChange={this.handleTitleChange}
-                    handleTimeInMinutesChange={this.handleTimeInMinutesChange}
-                    handleSubmit={this.handleSubmit}
-                />
             </>
         )
     }
