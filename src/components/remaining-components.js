@@ -4,6 +4,7 @@ import uuid from "uuid";
 import Clock from "./Clock";
 import ProgressBar from "./ProgressBar";
 import TimeBox from "./TimeBox";
+import TimeBoxForm from "./TimeBoxForm";
 
 class EditableTimeBox extends React.Component {
     state = {
@@ -341,34 +342,6 @@ class TimeBoxUpdater extends React.Component {
             </>
         )
     }
-}
-
-function TimeBoxForm({handleTimeInMinutesChange, handleTitleChange, handleSubmit, title, totalTimeInMinutes}) {
-    return (
-        <form onSubmit={handleSubmit} className="TimeBoxForm">
-            <label>
-                What are you doing?
-                <input
-                    value={title}
-                    onChange={handleTitleChange}
-                    type="text"
-                />
-            </label>
-            <br/>
-            <label>
-                How many minutes?
-                <input
-                    value={totalTimeInMinutes}
-                    onChange={handleTimeInMinutesChange}
-                    type="number"
-                />
-            </label>
-            <br/>
-            <button>
-                Confirm
-            </button>
-        </form>
-    )
 }
 
 export { EditableTimeBox, TimeBoxList };
