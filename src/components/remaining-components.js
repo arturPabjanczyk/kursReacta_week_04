@@ -3,6 +3,7 @@ import uuid from "uuid";
 
 import Clock from "./Clock";
 import ProgressBar from "./ProgressBar";
+import TimeBox from "./TimeBox";
 
 class EditableTimeBox extends React.Component {
     state = {
@@ -368,24 +369,6 @@ function TimeBoxForm({handleTimeInMinutesChange, handleTitleChange, handleSubmit
             </button>
         </form>
     )
-}
-
-class TimeBox extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        const {onDelete, onEdit, timeBox} = this.props;
-        return (
-            <div className="TimeBox">
-                <h3>{timeBox.title} - {timeBox.totalTimeInMinutes} min.</h3>
-                <button onClick={onDelete}>Delete</button>
-                <button onClick={onEdit}>Edit
-                </button>
-            </div>
-        )
-    }
 }
 
 export { EditableTimeBox, TimeBoxList };
