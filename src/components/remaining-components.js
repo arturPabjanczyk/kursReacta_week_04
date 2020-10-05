@@ -2,7 +2,7 @@ import React from "react";
 import uuid from "uuid";
 
 import Clock from "./Clock";
-
+import ProgressBar from "./ProgressBar";
 
 class EditableTimeBox extends React.Component {
     state = {
@@ -85,14 +85,6 @@ function TimeBoxEditor(props) {
             </button>
         </div>
     )
-}
-
-function ProgressBar({className = "", percent = 33}) {
-    return (
-        <div className={"ProgressBar " + className}>
-            <div style={{width: `${percent}%`}}/>
-        </div>
-    );
 }
 
 class CurrentTimeBox extends React.Component {
