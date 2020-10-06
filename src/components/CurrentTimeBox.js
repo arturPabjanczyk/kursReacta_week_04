@@ -72,7 +72,12 @@ class CurrentTimeBox extends React.Component {
             <div className={`CurrentTimeBox ${isEditable ? "inactive" : ""}`}>
                 <h1>{title}</h1>
                 <Clock minutes={minutesLeft} seconds={secondsLeft} className={isPaused ? "inactive" : ""}/>
-                <ProgressBar percent={progressInPercent} className={isPaused ? "inactive" : ""}/>
+                <ProgressBar
+                    percent={progressInPercent}
+                    className={isPaused ? "inactive" : ""}
+                    color="red"
+                    big
+                />
                 <button onClick={onEdit} disabled={isEditable}>Edytuj</button>
                 <button onClick={this.handleStart} disabled={isRunning}>Start</button>
                 <button onClick={this.handleStop} disabled={!isRunning}>Stop</button>
