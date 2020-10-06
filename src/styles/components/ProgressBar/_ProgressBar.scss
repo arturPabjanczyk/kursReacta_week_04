@@ -13,12 +13,16 @@
     border-color: orangered;
   }
 
+  &--color-green {
+    border-color: green;
+  }
+
   &__bar {
     height: 100%;
     background-color: black;
   }
 
   &--color-red &__bar {
-    background-color: lighten(orangered, 30);
+    background-color: orangered;
   }
 }
