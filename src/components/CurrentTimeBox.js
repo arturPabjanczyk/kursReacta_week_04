@@ -14,6 +14,10 @@ class CurrentTimeBox extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        window.clearInterval(this.intervalId);
+    }
+
     handleStart = (event) => {
         this.setState({isRunning: true})
         this.startTimer();
