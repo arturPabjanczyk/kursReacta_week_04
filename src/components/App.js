@@ -5,10 +5,12 @@ import TimeBoxList from "./TimeBoxList";
 
 function App() {
     return (
-        <div className="App">
-            <EditableTimeBox/>
-            <TimeBoxList/>
-        </div>
+        <React.StrictMode>
+            <div className="App">
+                <EditableTimeBox/>
+                <TimeBoxList/>
+            </div>
+        </React.StrictMode>
     )
 }
 
