@@ -84,12 +84,16 @@ class TimeBoxList extends React.Component {
                 }
                 <Error message="Coś się wykrzaczyło w liście :)">
                     {!isEdited && this.state.timeBoxes.map((timeBox, index) => (
-                        <TimeBox
+                        <Error
                             key={timeBox.id}
-                            timeBox={timeBox}
-                            onDelete={() => this.removeTimeBox(index)}
-                            onEdit={() => this.handleEdit(index, timeBox)}
-                        />
+                            message={`Coś się wykrzaczyło w timeBoxie ${timeBox.title}`}
+                        >
+                            <TimeBox
+                                timeBox={timeBox}
+                                onDelete={() => this.removeTimeBox(index)}
+                                onEdit={() => this.handleEdit(index, timeBox)}
+                            />
+                        </Error>
                     ))}
                 </Error>
             </>
