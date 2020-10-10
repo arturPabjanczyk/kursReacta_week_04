@@ -68,12 +68,12 @@ class TimeBoxList extends React.Component {
     }
 
     render() {
-        const {index, isEdited, title, totalTimeInMinutes, editedTimeBox} = this.state;
+        const {editedTimeBox, editedIndex, isEdited,} = this.state;
         return (
             <>
                 {isEdited ?
                     <TimeBoxUpdater
-                        index={index}
+                        index={editedIndex}
                         editedTimeBox={editedTimeBox}
                         onConfirm={this.updateTimeBox}
                         handleTitleChange={this.handleTitleChange}
