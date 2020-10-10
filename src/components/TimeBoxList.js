@@ -17,7 +17,12 @@ class TimeBoxList extends React.Component {
             {id: uuid.v4(), title: "title1", totalTimeInMinutes: "13"},
             {id: uuid.v4(), title: "title2", totalTimeInMinutes: "13"},
             {id: uuid.v4(), title: "title3", totalTimeInMinutes: "14"}
-        ]
+        ],
+        hasError: false
+    }
+
+    static getDerivedStateFromError(error) {
+        return {hasError: true};
     }
 
     handleTitleChange = (changedTitle) => {
@@ -79,15 +84,19 @@ class TimeBoxList extends React.Component {
                         handleTitleChange={this.handleTitleChange}
                         handleTimeInMinutesChange={this.handleTimeInMinutesChange}
                     /> :
-                    <TimeBoxCreator onConfirm={this.handleCreate}/>}
-                {!isEdited && this.state.timeBoxes.map((timeBox, index) => (
-                    <TimeBox
-                        key={timeBox.id}
-                        timeBox={timeBox}
-                        onDelete={() => this.removeTimeBox(index)}
-                        onEdit={() => this.handleEdit(index, timeBox)}
-                    />
-                ))}
+                    <TimeBoxCreator onConfirm={this.handleCreate}/>
+                }
+                {
+                    this.state.hasError ?
+                        "coś się wykrzaczyło" :
+                        !isEdited && this.state.timeBoxes.map((timeBox, index) => (
+                            <TimeBox
+                                key={timeBox.id}
+                                timeBox={timeBox}
+                                onDelete={() => this.removeTimeBox(index)}
+                                onEdit={() => this.handleEdit(index, timeBox)}
+                            />
+                        ))}
             </>
         )
     }
