@@ -4,6 +4,7 @@ import uuid from "uuid";
 import TimeBoxUpdater from "./TimeBoxUpdater";
 import TimeBoxCreator from "./TimeBoxCreator";
 import TimeBox from "./TimeBox";
+import Error from "./Error";
 
 class TimeBoxList extends React.Component {
 
@@ -18,15 +19,6 @@ class TimeBoxList extends React.Component {
             {id: uuid.v4(), title: "title2", totalTimeInMinutes: "13"},
             {id: uuid.v4(), title: "title3", totalTimeInMinutes: "14"}
         ],
-        hasError: false
-    }
-
-    static getDerivedStateFromError(error) {
-        return {hasError: true};
-    }
-
-    componentDidCatch(error, info) {
-        console.log("Wystąpił następujący błąd: ", error, info.componentStack);
     }
 
     handleTitleChange = (changedTitle) => {
@@ -90,17 +82,16 @@ class TimeBoxList extends React.Component {
                     /> :
                     <TimeBoxCreator onConfirm={this.handleCreate}/>
                 }
-                {
-                    this.state.hasError ?
-                        "coś się wykrzaczyło" :
-                        !isEdited && this.state.timeBoxes.map((timeBox, index) => (
-                            <TimeBox
-                                key={timeBox.id}
-                                timeBox={timeBox}
-                                onDelete={() => this.removeTimeBox(index)}
-                                onEdit={() => this.handleEdit(index, timeBox)}
-                            />
-                        ))}
+                <Error message="Coś się wykrzaczyło w liście :)">
+                    {!isEdited && this.state.timeBoxes.map((timeBox, index) => (
+                        <TimeBox
+                            key={timeBox.id}
+                            timeBox={timeBox}
+                            onDelete={() => this.removeTimeBox(index)}
+                            onEdit={() => this.handleEdit(index, timeBox)}
+                        />
+                    ))}
+                </Error>
             </>
         )
     }
