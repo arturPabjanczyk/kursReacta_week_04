@@ -1,12 +1,7 @@
 import React from "react";
 
-class TimeBox extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+function TimeBox({onEdit, onDelete, timeBox}) {
 
-    render() {
-        const {onDelete, onEdit, timeBox} = this.props;
         return (
             <div className="TimeBox">
                 <h3>{timeBox.title} - {timeBox.totalTimeInMinutes} min.</h3>
@@ -15,7 +10,6 @@ class TimeBox extends React.Component {
                 </button>
             </div>
         )
-    }
 }
 
 export default TimeBox;
