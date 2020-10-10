@@ -25,6 +25,10 @@ class TimeBoxList extends React.Component {
         return {hasError: true};
     }
 
+    componentDidCatch(error, info) {
+        console.log("Wystąpił następujący błąd: ", error, info.componentStack);
+    }
+
     handleTitleChange = (changedTitle) => {
         this.setState({title: changedTitle})
     }
