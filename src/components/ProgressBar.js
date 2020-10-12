@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames"
 
-function ProgressBar({className = "", percent = 33, big = false, color = null}) {
+function ProgressBar({className, percent, big, color}) {
     let progressClassName = classNames(
         "progress",
         className,
@@ -15,6 +15,13 @@ function ProgressBar({className = "", percent = 33, big = false, color = null}) 
             <div className={"progress__bar"} style={{width: `${percent}%`}}/>
         </div>
     );
+}
+
+ProgressBar.defaultProps = {
+    className: "",
+    percent: 33,
+    big: false,
+    color: null
 }
 
 export default ProgressBar;
