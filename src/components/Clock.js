@@ -15,9 +15,9 @@ function Clock({className, minutes, seconds}) {
 const NumberOrStringType = PropTypes.oneOfType([PropTypes.number, PropTypes.string]);
 
 Clock.defaultProps = {
-    className : "",
-    minutes : 20,
-    seconds : 48
+    className: "",
+    minutes: 20,
+    seconds: 48
 }
 
 Clock.propTypes = {
@@ -27,7 +27,7 @@ Clock.propTypes = {
 }
 
 function NonNegativeNumberType(prop, propName, componentName) {
-    if (prop[propName] < 0 ) {
+    if (prop[propName] < 0) {
         return new Error(`Invalid prop '${propName}' issued to component '${componentName}'. It has to be grater or equal to 0.`);
     }
 }
