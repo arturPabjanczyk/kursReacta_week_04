@@ -22,8 +22,14 @@ Clock.defaultProps = {
 
 Clock.propTypes = {
     className: PropTypes.string,
-    minutes: PropTypes.number.isRequired,
+    minutes: NonNegativeNumberType.isRequired,
     seconds: NumberOrStringType.isRequired,
+}
+
+function NonNegativeNumberType(prop, propName, componentName) {
+    if (prop[propName] < 0 ) {
+        return new Error(`Invalid prop '${propName}' issued to component '${componentName}'. It has to be grater or equal to 0.`);
+    }
 }
 
 export default Clock;
