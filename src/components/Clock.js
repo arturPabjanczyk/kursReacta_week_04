@@ -11,6 +11,9 @@ function Clock({className, minutes, seconds}) {
         </h2>
     );
 }
+
+const NumberOrStringType = PropTypes.oneOfType([PropTypes.number, PropTypes.string]);
+
 Clock.defaultProps = {
     className : "",
     minutes : 20,
@@ -20,7 +23,7 @@ Clock.defaultProps = {
 Clock.propTypes = {
     className: PropTypes.string,
     minutes: PropTypes.number.isRequired,
-    seconds: PropTypes.number.isRequired,
+    seconds: NumberOrStringType.isRequired,
 }
 
 export default Clock;
