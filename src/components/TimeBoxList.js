@@ -4,7 +4,7 @@ import uuid from "uuid";
 import TimeBoxUpdater from "./TimeBoxUpdater";
 import TimeBoxCreator from "./TimeBoxCreator";
 import TimeBox from "./TimeBox";
-import Error from "./Error";
+import ErrorBoundary from "./ErrorBoundary";
 
 class TimeBoxList extends React.Component {
 
@@ -29,7 +29,7 @@ class TimeBoxList extends React.Component {
     }
 
     addTimeBox = (timeBox) => {
-        throw new Error("Nie udało się utworzyć timeboxa");
+        throw new ErrorBoundary("Nie udało się utworzyć timeboxa");
         // this.setState(prevState => {
         //     const timeBoxes = [timeBox, ...prevState.timeBoxes];
         //     return {timeBoxes};
@@ -87,9 +87,9 @@ class TimeBoxList extends React.Component {
                     /> :
                     <TimeBoxCreator onConfirm={this.handleCreate}/>
                 }
-                <Error message="Coś się wykrzaczyło w liście :)">
+                <ErrorBoundary message="Coś się wykrzaczyło w liście :)">
                     {!isEdited && this.state.timeBoxes.map((timeBox, index) => (
-                        <Error
+                        <ErrorBoundary
                             key={timeBox.id}
                             message={`Coś się wykrzaczyło w timeBoxie ${timeBox.title}`}
                         >
@@ -98,9 +98,9 @@ class TimeBoxList extends React.Component {
                                 onDelete={() => this.removeTimeBox(index)}
                                 onEdit={() => this.handleEdit(index, timeBox)}
                             />
-                        </Error>
+                        </ErrorBoundary>
                     ))}
-                </Error>
+                </ErrorBoundary>
             </>
         )
     }

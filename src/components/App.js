@@ -2,16 +2,16 @@ import React from "react";
 
 import EditableTimeBox from "./EditableTimeBox";
 import TimeBoxList from "./TimeBoxList";
-import Error from "./Error";
+import ErrorBoundary from "./ErrorBoundary";
 
 function App() {
     return (
         <React.StrictMode>
             <div className="App">
-                <Error message="Coś nie działa w całej aplikacji - wyślij email do support@artapps.pl">
+                <ErrorBoundary message="Coś nie działa w całej aplikacji - wyślij email do support@artapps.pl">
                     <EditableTimeBox/>
                     <TimeBoxList/>
-                </Error>
+                </ErrorBoundary>
             </div>
         </React.StrictMode>
     )
