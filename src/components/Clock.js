@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function Clock({className, minutes, seconds}) {
     return (
@@ -14,6 +15,12 @@ Clock.defaultProps = {
     className : "",
     minutes : 20,
     seconds : 48
+}
+
+Clock.propTypes = {
+    className: PropTypes.string,
+    minutes: PropTypes.number.isRequired,
+    seconds: PropTypes.number.isRequired,
 }
 
 export default Clock;
