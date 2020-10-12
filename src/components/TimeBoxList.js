@@ -29,10 +29,11 @@ class TimeBoxList extends React.Component {
     }
 
     addTimeBox = (timeBox) => {
-        this.setState(prevState => {
-            const timeBoxes = [timeBox, ...prevState.timeBoxes];
-            return {timeBoxes};
-        })
+        throw new Error("Nie udało się utworzyć timeboxa");
+        // this.setState(prevState => {
+        //     const timeBoxes = [timeBox, ...prevState.timeBoxes];
+        //     return {timeBoxes};
+        // })
     }
 
     removeTimeBox = (indexToRemove) => {
@@ -54,7 +55,11 @@ class TimeBoxList extends React.Component {
     }
 
     handleCreate = (createdTimeBox) => {
-        this.addTimeBox(createdTimeBox)
+        try {
+            this.addTimeBox(createdTimeBox)
+        } catch (error) {
+            console.log("Wystąpił błąd przy tworzeniu timeboxa: ", error);
+        }
     }
 
     handleEdit = (index, editedTimeBox) => {
