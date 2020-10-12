@@ -1,6 +1,6 @@
 import React from "react";
 
-function Clock({className = "", minutes = 20, seconds = 48}) {
+function Clock({className, minutes, seconds}) {
     return (
         <h2 className={"clock " + className}>
             <span>Left </span>
@@ -9,6 +9,11 @@ function Clock({className = "", minutes = 20, seconds = 48}) {
             <span className="clock__seconds">{seconds}</span>
         </h2>
     );
+}
+Clock.defaultProps = {
+    className : "",
+    minutes : 20,
+    seconds : 48
 }
 
 export default Clock;
