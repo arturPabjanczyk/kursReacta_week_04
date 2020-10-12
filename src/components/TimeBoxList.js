@@ -4,6 +4,7 @@ import uuid from "uuid";
 import TimeBoxUpdater from "./TimeBoxUpdater";
 import TimeBoxCreator from "./TimeBoxCreator";
 import TimeBox from "./TimeBox";
+import Error from "./Error";
 
 class TimeBoxList extends React.Component {
 
@@ -17,7 +18,7 @@ class TimeBoxList extends React.Component {
             {id: uuid.v4(), title: "title1", totalTimeInMinutes: "13"},
             {id: uuid.v4(), title: "title2", totalTimeInMinutes: "13"},
             {id: uuid.v4(), title: "title3", totalTimeInMinutes: "14"}
-        ]
+        ],
     }
 
     handleTitleChange = (changedTitle) => {
@@ -68,26 +69,33 @@ class TimeBoxList extends React.Component {
     }
 
     render() {
-        const {index, isEdited, title, totalTimeInMinutes, editedTimeBox} = this.state;
+        const {editedTimeBox, editedIndex, isEdited,} = this.state;
         return (
             <>
                 {isEdited ?
                     <TimeBoxUpdater
-                        index={index}
+                        index={editedIndex}
                         editedTimeBox={editedTimeBox}
                         onConfirm={this.updateTimeBox}
                         handleTitleChange={this.handleTitleChange}
                         handleTimeInMinutesChange={this.handleTimeInMinutesChange}
                     /> :
-                    <TimeBoxCreator onConfirm={this.handleCreate}/>}
-                {!isEdited && this.state.timeBoxes.map((timeBox, index) => (
-                    <TimeBox
-                        key={timeBox.id}
-                        timeBox={timeBox}
-                        onDelete={() => this.removeTimeBox(index)}
-                        onEdit={() => this.handleEdit(index, timeBox)}
-                    />
-                ))}
+                    <TimeBoxCreator onConfirm={this.handleCreate}/>
+                }
+                <Error message="Coś się wykrzaczyło w liście :)">
+                    {!isEdited && this.state.timeBoxes.map((timeBox, index) => (
+                        <Error
+                            key={timeBox.id}
+                            message={`Coś się wykrzaczyło w timeBoxie ${timeBox.title}`}
+                        >
+                            <TimeBox
+                                timeBox={timeBox}
+                                onDelete={() => this.removeTimeBox(index)}
+                                onEdit={() => this.handleEdit(index, timeBox)}
+                            />
+                        </Error>
+                    ))}
+                </Error>
             </>
         )
     }
