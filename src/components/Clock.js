@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function Clock({className, minutes, seconds}) {
     return (
-        <h2 className={"clock " + className}>
+        <h2 className={"Clock " + className}>
             <span>Left </span>
             <span className="clock__minutes">{minutes}</span>
             <span className="clock__delimiter">:</span>
@@ -15,14 +15,12 @@ function Clock({className, minutes, seconds}) {
 const NumberOrStringType = PropTypes.oneOfType([PropTypes.number, PropTypes.string]);
 
 Clock.defaultProps = {
-    className: "",
-    minutes: 20,
-    seconds: 48
+    className: ""
 }
 
 Clock.propTypes = {
     className: PropTypes.string,
-    minutes: NonNegativeNumberType.isRequired,
+    minutes: NumberOrStringType.isRequired,
     seconds: NumberOrStringType.isRequired,
 }
 
