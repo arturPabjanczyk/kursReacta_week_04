@@ -12,9 +12,7 @@ describe('<Clock />', () => {
             )
         })
         it('shouls render properly', () => {
-            expect(clockRenderer.toJSON().type).toEqual("h2");
-            expect(clockRenderer.toJSON().props).toMatchObject({"className": expect.stringMatching(/Clock/)});
-            expect(clockRenderer.toJSON().children[1].children).toEqual(expect.arrayContaining(["10"]));
+            expect(clockRenderer.toJSON().type).toMatchSnapshot();
         });
     });
     it('should set className to empty string if not given anything else', () => {
