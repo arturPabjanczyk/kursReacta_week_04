@@ -1,28 +1,28 @@
 import React from "react";
 import Clock from "../../components/Clock"
-import ReactDOM from "react-dom"
+import renderer from "react-test-renderer"
 
-var root = null;
+var clockRenderer = null;
 
 describe('<Clock />', () => {
-    describe('when given minutes and seconds', () => {
+    describe('when given minutes and seconds (TestRenderer)', () => {
         beforeEach(() => {
-            root = document.createElement("div");
-            ReactDOM.render(
-                <Clock minutes={10} seconds={20}/>, root
+            clockRenderer = renderer.create(
+                <Clock minutes={10} seconds={20}/>
             )
         })
         it('should render a h2 element', () => {
-            expect(root.childNodes[0].nodeName).toEqual("H2")
+            console.log(clockRenderer.toJSON());
+            expect(clockRenderer.toJSON().type).toEqual("h2");
         });
         it('should set a Clock className', () => {
-            expect(root.childNodes[0].className).toMatch(/Clock/)
+            expect(clockRenderer.toJSON().props).toMatchObject({"className": expect.stringMatching(/Clock/)});
         });
         it('should render time properly', () => {
-            expect(root.childNodes[0].textContent).toMatch(/10:20/)
+            expect(clockRenderer.toJSON().children[1].children).toEqual(expect.arrayContaining(["10"]));
         });
     });
-    it('should set className to empty string if not given anything else', function () {
+    it('should set className to empty string if not given anything else', () => {
         expect(<Clock minutes={10} seconds={20}/>)
             .toEqual(<Clock className="" minutes={10} seconds={20}/>)
     });
