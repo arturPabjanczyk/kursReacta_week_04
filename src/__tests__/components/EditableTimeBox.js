@@ -1,5 +1,10 @@
+import React from "react";
+import EditableTimeBox from "../../components/EditableTimeBox";
+import {render} from '@testing-library/react'
+
 describe('<EditableTimeBox />', () => {
-    xit('should fail for now', function () {
-        expect(true).toBeFalsy();
+    it('should fail for now', function () {
+        const result = render(<EditableTimeBox />)
+        expect(result).toEqual();
     });
 })
