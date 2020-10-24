@@ -5,18 +5,18 @@ import renderer from "react-test-renderer"
 var clockRenderer = null;
 
 describe('<Clock />', () => {
-    describe('when given minutes and seconds (TestRenderer)', () => {
-        beforeEach(() => {
-            clockRenderer = renderer.create(
-                <Clock minutes={10} seconds={20}/>
-            )
-        })
-        it('should render properly', () => {
-            expect(clockRenderer.toJSON().type).toMatchSnapshot();
-        });
+  describe('when given minutes and seconds (TestRenderer)', () => {
+    beforeEach(() => {
+      clockRenderer = renderer.create(
+        <Clock minutes={10} seconds={20}/>
+      )
+    })
+    it('should render properly', () => {
+      expect(clockRenderer.toJSON().type).toMatchSnapshot();
     });
-    it('should set className to empty string if not given anything else', () => {
-        expect(<Clock minutes={10} seconds={20}/>)
-            .toEqual(<Clock className="" minutes={10} seconds={20}/>)
-    });
+  });
+  it('should set className to empty string if not given anything else', () => {
+    expect(<Clock minutes={10} seconds={20}/>)
+      .toEqual(<Clock className="" minutes={10} seconds={20}/>)
+  });
 })
