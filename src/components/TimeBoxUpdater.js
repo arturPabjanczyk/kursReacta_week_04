@@ -22,6 +22,7 @@ class TimeBoxUpdater extends React.Component {
         title: this.state.titleInput,
         totalTimeInMinutes: this.state.totalTimeInMinutesInput
       }
+
     }), () => {
       this.props.onConfirm(
         this.state.index,

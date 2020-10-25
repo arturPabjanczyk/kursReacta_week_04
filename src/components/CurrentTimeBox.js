@@ -2,6 +2,7 @@ import React from "react";
 import Clock from "./Clock";
 import ProgressBar from "./ProgressBar";
 import {getMinutesAndSecondsFromDurationInSeconds} from "../lib/time"
+import ProgressArch from "./ProgressArch";
 
 class CurrentTimeBox extends React.Component {
   constructor(props) {
@@ -56,7 +57,6 @@ class CurrentTimeBox extends React.Component {
       function (prevState) {
         const isPaused = !prevState.isPaused;
         if (isPaused) {
-          // console.count("setState")
           this.stopTimer();
         } else {
           this.startTimer();
@@ -86,6 +86,13 @@ class CurrentTimeBox extends React.Component {
           color="red"
           big
         />
+        <ProgressArch
+          height={160}
+          width={300}
+          percent={progressInPercent}
+          isPaused={isPaused}
+        />
+        <br/>
         <button onClick={onEdit} disabled={isEditable}>Edytuj</button>
         <button onClick={this.handleStart} disabled={isRunning}>Start</button>
         <button onClick={this.handleStop} disabled={!isRunning}>Stop</button>
