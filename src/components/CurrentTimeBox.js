@@ -3,6 +3,7 @@ import Clock from "./Clock";
 import ProgressBar from "./ProgressBar";
 import {getMinutesAndSecondsFromDurationInSeconds} from "../lib/time"
 import ProgressArch from "./ProgressArch";
+import ProgressBarJquery from "./ProgressBarJquery";
 
 class CurrentTimeBox extends React.Component {
   constructor(props) {
@@ -92,6 +93,7 @@ class CurrentTimeBox extends React.Component {
           percent={progressInPercent}
           isPaused={isPaused}
         />
+        <ProgressBarJquery percent={progressInPercent}/>
         <br/>
         <button onClick={onEdit} disabled={isEditable}>Edytuj</button>
         <button onClick={this.handleStart} disabled={isRunning}>Start</button>
